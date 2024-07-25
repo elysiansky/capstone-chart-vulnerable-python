@@ -6,7 +6,7 @@ image:
   repository: python
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 3886b20-amd64
+  tag: 627fccf-amd64
 
 imagePullSecrets: []
 nameOverride: "capstone-vulnerable-python"
@@ -113,7 +113,7 @@ python:
   replicas: 2
   image:
     repository: elysiansky/capstone-vulnerable-python
-    tag: 3886b20-amd64
+    tag: 627fccf-amd64
   service:
     type: ClusterIP
   resources:
