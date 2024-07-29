@@ -8,11 +8,11 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: {{ .Values.python.service.type }}
+  type: {{ .Values.service.type }}
   ports:
-    - port: 5000
-      targetPort: 5000
-      protocol: TCP
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      protocol: {{ .Values.service.protocol }}
   selector:
     app: {{ include "capstone-chart-vulnerable-python.name" . }}
     release: {{ .Release.Name }}

@@ -8,7 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicas }} 
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ include "capstone-chart-vulnerable-python.name" . }}
@@ -21,13 +21,13 @@ spec:
     spec:
       containers:
       - name: python
-        image: "{{ .Values.python.image.repository }}:{{ .Values.python.image.tag }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: 9000
+        - containerPort: {{ .Values.containers.ports.containerPort }}
         env:
-           {{- toYaml .Values.python.env | nindent 8 }}
+           {{- toYaml .Values.env | nindent 8 }}
         resources:
-           {{- toYaml .Values.python.resources | nindent 12 }}
+           {{- toYaml .Values.resources | nindent 12 }}
       volumes:
       - name: python-config
         configMap:

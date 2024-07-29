@@ -1,16 +1,19 @@
 # Default values for capstone-chart.
-
-replicaCount: 1
+replicaCount: 3
 
 image:
-  repository: python
+  repository: elysiansky/capstone-vulnerable-python
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: b153861-amd64
+  # Overrides the image tag whose default is the chart appVersion.    
+  tag: b153861-amd64  
 
 imagePullSecrets: []
 nameOverride: "capstone-vulnerable-python"
 fullnameOverride: "capstone-vulnerable-python"
+
+env:
+  - name: PODSLEEP
+    value: 'no'
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -37,9 +40,14 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+containers:
+  ports:
+    containerPort: 5000
+
 service:
   type: ClusterIP
-  port: 80
+  port: 5000
+  protocol: TCP
 
 ingress:
   enabled: true
@@ -104,22 +112,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-
-python:
-  env:
-    - name: PODSLEEP
-      value: 'no'
-  replicas: 1
-  image:
-    repository: elysiansky/capstone-vulnerable-python
-    tag: b153861-amd64
-  service:
-    type: ClusterIP
-  resources:
-    limits:
-      cpu: 100m
-      memory: 128Mi
-    requests:
-      cpu: 100m
-      memory: 128Mi
