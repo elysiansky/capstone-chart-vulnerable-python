@@ -1,5 +1,5 @@
 # Default values for capstone-chart.
-replicaCount: 3
+replicaCount: 1
 
 image:
   repository: elysiansky/capstone-vulnerable-python
