@@ -4,8 +4,8 @@ replicaCount: 3
 image:
   repository: elysiansky/capstone-vulnerable-python
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.    
-  tag: b153861-amd64  
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: a09c37a-amd64
 
 imagePullSecrets: []
 nameOverride: "capstone-vulnerable-python"
