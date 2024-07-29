@@ -1,6 +1,6 @@
 # Default values for capstone-chart.
 
-replicaCount: 3
+replicaCount: 1
 
 image:
   repository: python
@@ -81,7 +81,7 @@ readinessProbe:
 
 autoscaling:
   enabled: true
-  minReplicas: 3
+  minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
@@ -110,7 +110,7 @@ python:
   env:
     - name: PODSLEEP
       value: 'no'
-  replicas: 3
+  replicas: 1
   image:
     repository: elysiansky/capstone-vulnerable-python
     tag: e5bf5b8-amd64
